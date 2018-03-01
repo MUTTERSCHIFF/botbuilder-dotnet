@@ -12,7 +12,7 @@ namespace Microsoft.Bot.Builder.Adapters
     public class TestAdapter : BotAdapter
     {
         private int _nextId = 0;
-        private readonly List<Activity> botReplies = new List<Activity>();        
+        private readonly List<IActivity> botReplies = new List<IActivity>();        
 
         public TestAdapter(ConversationReference reference = null)
         {
@@ -64,7 +64,7 @@ namespace Microsoft.Bot.Builder.Adapters
         public ConversationReference ConversationReference { get; set; }
 
 
-        protected async override Task SendActivitiesImplementation(IBotContext context, IEnumerable<Activity> activities)
+        protected async override Task SendActivitiesImplementation(IBotContext context, IEnumerable<IActivity> activities)
         {
             foreach (var activity in activities)
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Bot.Builder.Adapters
             }
         }
 
-        protected override Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, Activity activity)
+        protected override Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, IActivity activity)
         {
             lock (this.botReplies)
             {

@@ -62,7 +62,7 @@ namespace Microsoft.Bot.Builder.Adapters
             await base.RunPipeline(context, callback).ConfigureAwait(false);
         }
 
-        protected async override Task SendActivitiesImplementation(IBotContext context, IEnumerable<Activity> activities)
+        protected async override Task SendActivitiesImplementation(IBotContext context, IEnumerable<IActivity> activities)
         {
             foreach (var activity in activities)
             {
@@ -82,7 +82,7 @@ namespace Microsoft.Bot.Builder.Adapters
             }
         }
 
-        protected override async Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, Activity activity)
+        protected override async Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, IActivity activity)
         {
             MicrosoftAppCredentials appCredentials = await GetAppCredentials((context as BotFrameworkBotContext).BotAppId);
             var connectorClient = new ConnectorClient(new Uri(activity.ServiceUrl), appCredentials);

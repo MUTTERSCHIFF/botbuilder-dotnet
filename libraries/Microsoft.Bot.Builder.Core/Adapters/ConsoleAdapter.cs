@@ -47,7 +47,7 @@ namespace Microsoft.Bot.Builder.Adapters
             }
         }
 
-        protected override async Task SendActivitiesImplementation(IBotContext context, IEnumerable<Activity> activities)
+        protected override async Task SendActivitiesImplementation(IBotContext context, IEnumerable<IActivity> activities)
         {
             foreach (var activity in activities)
             {
@@ -82,7 +82,7 @@ namespace Microsoft.Bot.Builder.Adapters
             }
         }
 
-        protected override Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, Activity activity)
+        protected override Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, IActivity activity)
         {
             throw new NotImplementedException();
         }

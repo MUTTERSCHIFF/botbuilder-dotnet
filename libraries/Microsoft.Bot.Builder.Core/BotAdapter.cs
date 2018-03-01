@@ -36,7 +36,7 @@ namespace Microsoft.Bot.Builder
         /// <param name="context"></param>
         /// <param name=""></param>
         /// <returns></returns>
-        protected abstract Task SendActivitiesImplementation(IBotContext context, IEnumerable<Activity> activities);
+        protected abstract Task SendActivitiesImplementation(IBotContext context, IEnumerable<IActivity> activities);
 
         /// <summary>
         /// Implement updating an activity in the conversation
@@ -44,7 +44,7 @@ namespace Microsoft.Bot.Builder
         /// <param name="context"></param>
         /// <param name="activity"></param>
         /// <returns></returns>
-        protected abstract Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, Activity activity);
+        protected abstract Task<ResourceResponse> UpdateActivityImplementation(IBotContext context, IActivity activity);
 
         /// <summary>
         /// Implement deleting an activity in the conversation
